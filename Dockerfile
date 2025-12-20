@@ -1,6 +1,5 @@
 FROM python:3.10-slim
 
-# Install system dependencies (wajib untuk OCR & OpenCV)
 RUN apt-get update && apt-get install -y \
     build-essential \
     libgl1 \
@@ -10,11 +9,11 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY Backend/requirements.txt ./requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY Backend/ .
 
 EXPOSE 8000
 
