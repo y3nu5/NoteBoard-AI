@@ -16,7 +16,7 @@ COPY Backend/requirements.txt .
 RUN pip install --upgrade pip
 
 # Torch CPU ONLY (PENTING)
-RUN pip install torch==2.1.0+cpu \
+RUN pip install torch==2.9.1+cpu \
     -f https://download.pytorch.org/whl/cpu/torch_stable.html
 
 RUN pip install --no-cache-dir -r requirements.txt
