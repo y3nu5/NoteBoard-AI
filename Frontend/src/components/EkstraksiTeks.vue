@@ -143,7 +143,8 @@ import { ref, reactive, nextTick } from "vue";
 import axios from "axios";
 import { Camera } from "lucide-vue-next";
 
-const BASE_URL = "http://127.0.0.1:8000";
+// Backend URL - sesuaikan dengan Hugging Face Space Anda
+const BASE_URL = import.meta.env.VITE_API_URL || "https://yunus789-noteboard-ai-backend.hf.space";
 
 /* FILE STATE */
 const selectedFiles = ref([]);
@@ -156,7 +157,6 @@ const isEditMode = ref(false);
 
 const toggleEditMode = () => {
   if (isEditMode.value) {
-    // Keluar dari edit mode, reset grammar errors
     grammarErrors.value = [];
     highlightedHtml.value = escapeHtml(resultText.value);
   }
@@ -165,7 +165,6 @@ const toggleEditMode = () => {
 };
 
 const onManualEdit = () => {
-  // Reset grammar errors saat user manual edit
   grammarErrors.value = [];
 };
 
@@ -234,7 +233,7 @@ const handleExtract = async () => {
     resultText.value = res.data.results.join("\n\n---\n\n");
     grammarErrors.value = [];
     highlightedHtml.value = escapeHtml(resultText.value);
-    isEditMode.value = false; // Reset to view mode
+    isEditMode.value = false;
   } catch (err) {
     console.error(err);
     alert("OCR gagal. Pastikan backend berjalan.");
@@ -362,7 +361,7 @@ const handleSummarize = async () => {
     resultText.value = res.data.summary;
     grammarErrors.value = [];
     highlightedHtml.value = escapeHtml(resultText.value);
-    isEditMode.value = false; // Kembali ke view mode
+    isEditMode.value = false;
   } catch (err) {
     console.error(err);
     alert("Summary gagal. Pastikan backend berjalan.");
