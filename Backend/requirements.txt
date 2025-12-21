@@ -1,14 +1,26 @@
-fastapi
-uvicorn
+# API Framework
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
 
-numpy
-pillow
+# Core ML/Image Processing
+numpy==1.26.4
+pillow==10.4.0
 
-torch
-transformers
-surya-ocr
+# Torch CPU (akan diinstall terpisah di Dockerfile)
+# torch==2.5.1 (jangan di sini, ada di Dockerfile)
 
-reportlab
-requests
-tqdm
-regex
+# Transformers & Surya OCR
+transformers==4.46.0
+surya-ocr==0.17.0
+
+# PDF Generation
+reportlab==4.2.5
+
+# Utilities
+requests==2.32.3
+tqdm==4.66.5
+
+# HAPUS yang tidak perlu:
+# - regex (sudah built-in di Python)
+# - papaparse, sheetjs (ini JavaScript, bukan Python!)
+# - mammoth, tensorflow (tidak dipakai di code)
