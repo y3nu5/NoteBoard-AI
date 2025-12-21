@@ -1,15 +1,20 @@
-# summarize_service.py
-import asyncio
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 MODEL_ID = "panggi/t5-base-indonesian-summarization-cased"
 
-tokenizer = T5Tokenizer.from_pretrained(MODEL_ID)
-model = T5ForConditionalGeneration.from_pretrained(MODEL_ID)
+tokenizer = None
+model = None
+
+def load_model():
+    global tokenizer, model
+    if tokenizer is None or model is None:
+        tokenizer = T5Tokenizer.from_pretrained(MODEL_ID)
+        model = T5ForConditionalGeneration.from_pretrained(MODEL_ID)
+
 
 
 def _summarize_sync(text: str):
-    text = text.strip()
+    load_model()
 
     # Encode dengan batas maksimum 512 token
     input_ids = tokenizer.encode(
