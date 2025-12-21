@@ -52,9 +52,13 @@
         <div class="px-4 py-4 flex flex-col gap-3">
           <a @click="close" href="#home" class="block">Beranda</a>
           <a @click="close" href="#features" class="block">Fitur</a>
-          <a @click="close" href="#try" class="block btn-primary"
-            >Mulai Coba</a
+          <router-link
+            @click="close"
+            to="/ekstraksi-teks"
+            class="block"
           >
+            Mulai Coba
+          </router-link>
         </div>
       </div>
     </transition>
