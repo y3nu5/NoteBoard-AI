@@ -1,20 +1,26 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && apt-get install -y \
-    build-essential \
+    poppler-utils \
     libgl1 \
     libglib2.0-0 \
-    poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY Backend/requirements.txt ./requirements.txt
+COPY Backend/requirements.txt .
+
 RUN pip install --upgrade pip
+
+# Torch CPU ONLY (PENTING)
+RUN pip install torch==2.1.0+cpu \
+    -f https://download.pytorch.org/whl/cpu/torch_stable.html
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY Backend/ .
 
-EXPOSE 8000
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
