@@ -10,7 +10,7 @@ pillow==10.4.0
 # torch==2.5.1 (jangan di sini, ada di Dockerfile)
 
 # Transformers & Surya OCR
-transformers==4.46.0
+transformers==4.56.1
 surya-ocr==0.17.0
 
 # PDF Generation
