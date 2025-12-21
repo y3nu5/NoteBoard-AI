@@ -10,7 +10,6 @@ Pillow==10.4.0
 
 transformers==4.56.2
 tokenizers==0.15.2
-huggingface-hub==0.20.3
 regex==2024.11.6
 safetensors==0.4.2
 tqdm==4.67.1
