@@ -10,8 +10,8 @@
           <!-- Upload -->
           <label
             class="cursor-pointer bg-white border border-gray-300 text-gray-700 text-sm px-4 py-1 rounded-lg hover:bg-gray-100 transition">
-            Pilih / Ambil Foto
-            <input type="file" accept="image/*" capture="camera" multiple class="hidden" @change="onFileChange($event)" />
+            Pilih Foto
+            <input type="file" accept="image/*" multiple class="hidden" @change="onFileChange($event)" />
           </label>
 
           <!-- Camera Button -->
